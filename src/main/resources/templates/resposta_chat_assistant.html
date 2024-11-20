@@ -1,0 +1,28 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Resposta do botAssistant')"></head>
+
+<body>
+
+	<div class="container">
+
+		<div>
+			<h1><b>Resposta do ChatGPT</b></h1>
+		</div>
+		<br>
+		<div>
+			<h3><b>
+					<p th:text="${resposta}" style="color: green;"></p>
+				</b></h3>
+		</div>
+		<br>
+		<div>
+			<a href="/form_chat_gpt">Realizar uma nova pergunta</a>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
