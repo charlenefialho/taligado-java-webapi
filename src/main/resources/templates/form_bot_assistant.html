@@ -1,0 +1,40 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Chat do Bot Assistant')"></head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="text-center mb-4">
+					<h1 class="display-5 fw-bold text-primary" th:text="#{chatbot.text.titulo}">
+						Bot Assistente - Em que posso ajudar?
+					</h1>
+				</div>
+
+				<div class="card p-4 shadow-lg border-0">
+					<form th:action="@{/enviar_chat}" method="post">
+						<div class="mb-4">
+							<label for="pergunta" class="form-label fw-bold" th:text="#{chatbot.text.perguntar}">
+								Digite sua pergunta:
+							</label>
+							<input class="form-control form-control-lg" type="text" name="pergunta" id="pergunta"
+								   placeholder="Digite aqui sua pergunta">
+						</div>
+						<div class="d-flex justify-content-center gap-3">
+							<button class="btn btn-primary btn-lg px-5" type="submit" th:text="#{chatbot.perguntar}">
+								Perguntar
+							</button>
+							<a href="/historico" class="btn btn-outline-secondary btn-lg px-5" th:text="#{chatbot.voltar}">
+								Voltar
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

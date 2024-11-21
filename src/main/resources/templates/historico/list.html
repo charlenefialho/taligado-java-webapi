@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title='Historico')">
+		
+	</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Históricos</h1>
+        
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Data de Criação</th>
+                    <th>Valor Consumo (kWh)</th>
+                    <th>Intensidade de Carbono</th>
+                    <th>Custo de Energia Estimado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Thymeleaf para renderizar os dados -->
+                <tr th:each="historico : ${historicos}">
+                    <td th:text="${historico.idHistorico}"></td>
+                    <td th:text="${#dates.format(historico.dataCriacao, 'dd/MM/yyyy HH:mm')}"></td>
+                    <td th:text="${historico.valorConsumoKwh}"></td>
+                    <td th:text="${historico.intensidadeCarbono}"></td>
+                    <td th:text="${historico.custoEnergiaEstimado}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-y+o8sIKfG1vQ78ibLkmnAqcMghF6a8bLl5lP4b7cQNhIbL/u3pUEaB0A5Qhb09J7" 
+        crossorigin="anonymous">
+    </script>
+</body>
+</html>

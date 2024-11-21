@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments :: head(title='Historico')">
+			
+		</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Regulações de Energia</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tarifa (R$/kWh)</th>
+                    <th>Bandeira Tarifária</th>
+                    <th>Adicional</th>
+                    <th>Última Atualização</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="regulacao : ${regulacoes}">
+                    <td th:text="${regulacao.idRegulacao}"></td>
+                    <td th:text="${regulacao.tarifaKwh}"></td>
+                    <td th:text="${regulacao.nomeBandeira}"></td>
+                    <td th:text="${regulacao.tarifaAdicionalBandeira}"></td>
+                    <td th:text="${#dates.format(regulacao.dataAtualizacao, 'dd/MM/yyyy')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

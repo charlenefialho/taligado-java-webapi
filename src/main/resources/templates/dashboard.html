@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Dashboard de Consumo e Emissões</h1>
+
+        <!-- Gráfico de Consumo -->
+        <div class="mb-5">
+            <h3>Consumo de Energia (kWh)</h3>
+            <canvas id="consumoChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Gráfico de Emissões -->
+        <div>
+            <h3>Emissões de Carbono (kg)</h3>
+            <canvas id="emissaoChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Obtendo dados do modelo Thymeleaf
+        const historicos = /*[[${historicos}]]*/ [];
+
+        const datas = historicos.map(h => new Date(h.dataCriacao).toLocaleDateString());
+        const consumos = historicos.map(h => h.valorConsumoKwh);
+        const emissoes = historicos.map(h => h.intensidadeCarbono);
+
+        // Configuração do gráfico de consumo
+        const consumoChartCtx = document.getElementById('consumoChart').getContext('2d');
+        new Chart(consumoChartCtx, {
+            type: 'line',
+            data: {
+                labels: datas,
+                datasets: [{
+                    label: 'Consumo (kWh)',
+                    data: consumos,
+                    borderColor: 'blue',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Configuração do gráfico de emissões
+        const emissaoChartCtx = document.getElementById('emissaoChart').getContext('2d');
+        new Chart(emissaoChartCtx, {
+            type: 'bar',
+            data: {
+                labels: datas,
+                datasets: [{
+                    label: 'Emissões (kg)',
+                    data: emissoes,
+                    backgroundColor: 'green'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
