@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments :: head(title='Historico')">
-			
-		</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Lista de Regulações de Energia</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
+<head th:replace="~{fragments :: head(title='Lista de Filiais')}"></head>
+<body class="bg-dark text-light"
+      style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+    <!-- Header -->
+    <div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+        <h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">Histórico de Regulações de Energia</h1>
+        <p class="lead">Veja abaixo as regulações disponíveis no sistema.</p>
+    </div>
+
+    <!-- Botão de Voltar -->
+    <div class="container mb-4">
+        <a href="/initial_page" class="btn btn-secondary shadow px-4 py-2">
+            <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+    </div>
+
+    <!-- Tabela -->
+    <div class="container">
+        <table class="table table-bordered table-hover text-center table-striped" style="background-color: #2a2a40; color: #ffffff;">
+            <thead class="table-success" style="background-color: #8FBF48;">
                 <tr>
                     <th>ID</th>
                     <th>Tarifa (R$/kWh)</th>
@@ -17,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="regulacao : ${regulacoes}">
+                <tr th:each="regulacao : ${regulacoes}" style="color: #ffffff;">
                     <td th:text="${regulacao.idRegulacao}"></td>
                     <td th:text="${regulacao.tarifaKwh}"></td>
                     <td th:text="${regulacao.nomeBandeira}"></td>
@@ -27,5 +40,8 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 </body>
 </html>

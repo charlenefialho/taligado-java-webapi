@@ -10,7 +10,5 @@ public class FilialDTO {
     private String tipo;
     private String cnpjFilial;
     private String areaOperacional;
-    private Long empresaId;
-    private Long enderecoId;
 
 }

@@ -5,7 +5,7 @@ INSERT INTO empresa (id_empresa, nome, email, cnpj, segmento, data_fundacao) VAL
 INSERT INTO endereco (id_endereco, logradouro, cidade, estado, cep, pais) VALUES (1, 'Rua Principal, 123', 'São Paulo', 'SP', '01000-000', 'Brasil'), (2, 'Avenida Secundária, 456', 'Rio de Janeiro', 'RJ', '20000-000', 'Brasil');
 
 -- Tabela: filial
-INSERT INTO filial (id_filial, nome, tipo, cnpj_filial, area_operacional, empresa_idempresa, endereco_idendereco) VALUES (1, 'Filial SP', 'Matriz', '11122233000101', 'Produção', 1, 1), (2, 'Filial RJ', 'Filial', '44455566000102', 'Manutenção', 1, 2);
+--INSERT INTO filial (id_filial, nome, tipo, cnpj_filial, area_operacional, empresa_idempresa, endereco_idendereco) VALUES (1, 'Filial SP', 'Matriz', '11122233000101', 'Produção', 1, 1), (2, 'Filial RJ', 'Filial', '44455566000102', 'Manutenção', 1, 2);
 
 -- Tabela: dispositivo
 INSERT INTO dispositivo (id_disposito, nome, tipo, status, data_instalacao, potencia_nominal, filial_idfilial) VALUES (1, 'Dispositivo 1', 'Sensor', 'Ativo', '2023-01-10', 100.0, 1), (2, 'Dispositivo 2', 'Controlador', 'Inativo', '2023-02-15', 200.0, 2);

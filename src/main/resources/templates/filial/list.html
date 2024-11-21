@@ -1,31 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments :: head(title='Lista de filiais')">
-		
-	</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Lista de Filiais</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>CNPJ</th>
-                    <th>Área Operacional</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="filial : ${filiais}">
-                    <td th:text="${filial.idFilial}"></td>
-                    <td th:text="${filial.nome}"></td>
-                    <td th:text="${filial.tipo}"></td>
-                    <td th:text="${filial.cnpjFilial}"></td>
-                    <td th:text="${filial.areaOperacional}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+<head th:replace="fragments :: head(title='Lista de Filiais')"></head>
+
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+	<!-- Header -->
+	<div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+		<h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">Lista de Filiais</h1>
+		<p class="lead">Gerencie as filiais cadastradas no sistema.</p>
+	</div>
+
+	<!-- Botão de Criar Filial -->
+	<div class="container mb-4 text-center">
+		<a href="/filiais/nova" class="btn btn-success shadow px-4 py-2"
+			style="background-color: #8fbf49; border: none;">
+			<i class="bi bi-plus-circle"></i> Criar Nova Filial
+		</a>
+	</div>
+
+	<!-- Tabela -->
+	<div class="container">
+		<table class="table table-bordered table-hover text-center table-striped"
+			style="background-color: #2a2a40; color: #ffffff;">
+			<thead class="table-success" style="background-color: #8FBF48;">
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>CNPJ</th>
+					<th>Área Operacional</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="filial : ${filiais}" style="color: #ffffff;">
+					<td th:text="${filial.idFilial}"></td>
+					<td th:text="${filial.nome}"></td>
+					<td th:text="${filial.tipo}"></td>
+					<td th:text="${filial.cnpjFilial}"></td>
+					<td th:text="${filial.areaOperacional}"></td>
+					<td>
+						<form th:action="@{/filiais/{id}/editar(id=${filial.idFilial})}" method="post"
+							style="display: inline;">
+							<button class="btn btn-warning btn-sm" type="submit">
+								<i class="bi bi-pencil-square"></i> Editar
+							</button>
+						</form>
+
+						<form th:action="@{/filiais/deletar/{id}(id=${filial.idFilial})}" method="post"
+							style="display: inline;">
+							<button class="btn btn-danger btn-sm" type="submit">
+								<i class="bi bi-trash"></i> Excluir
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Bootstrap Icons -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+		rel="stylesheet">
 </body>
+
 </html>
