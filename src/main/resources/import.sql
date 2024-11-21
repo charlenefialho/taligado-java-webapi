@@ -14,7 +14,7 @@ INSERT INTO dispositivo (id_disposito, nome, tipo, status, data_instalacao, pote
 INSERT INTO sensor (id_sensor, tipo, descricao, unidade, valor_atual, tempo_operacao, dispositivo_iddispositivo) VALUES (1, 'Temperatura', 'Sensor de Temperatura', '°C', 25.5, 1200.0, 1), (2, 'Umidade', 'Sensor de Umidade', '%', 60.0, 800.0, 1);
 
 -- Tabela: alerta
-INSERT INTO alerta (id_alerta, descricao, severidade, data_alerta, sensor_idsensor) VALUES (1, 'Temperatura acima do limite', 'Alta', '2023-03-01', 1),(2, 'Umidade abaixo do esperado', 'Média', '2023-03-05', 2);
+--INSERT INTO alerta (id_alerta, descricao, severidade, data_alerta, sensor_idsensor) VALUES (1, 'Temperatura acima do limite', 'Alta', '2023-03-01', 1),(2, 'Umidade abaixo do esperado', 'Média', '2023-03-05', 2);
 
 -- Tabela: regulacao_energia
 INSERT INTO regulacao_energia (id_regulacao, tarifa_kwh, nome_bandeira, tarifa_adicional_bandeira, data_atualizacao) VALUES (1, 0.85, 'Verde', 0.0, '2023-03-10'), (2, 1.20, 'Vermelha', 0.35, '2023-03-12');
