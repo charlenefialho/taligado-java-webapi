@@ -1,39 +1,32 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments :: head(title='Chat do Bot Assistant')"></head>
-<body>
+<head th:replace="fragments :: head(title='Chat Assistant')"></head>
 
-	<div class="container mt-5">
-		<div class="row justify-content-center">
-			<div class="col-md-8">
-				<div class="text-center mb-4">
-					<h1 class="display-5 fw-bold text-primary" th:text="#{chatbot.text.titulo}">
-						Bot Assistente - Em que posso ajudar?
-					</h1>
-				</div>
+<body class="bg-dark text-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
 
-				<div class="card p-4 shadow-lg border-0">
-					<form th:action="@{/enviar_chat}" method="post">
-						<div class="mb-4">
-							<label for="pergunta" class="form-label fw-bold" th:text="#{chatbot.text.perguntar}">
-								Digite sua pergunta:
-							</label>
-							<input class="form-control form-control-lg" type="text" name="pergunta" id="pergunta"
-								   placeholder="Digite aqui sua pergunta">
-						</div>
-						<div class="d-flex justify-content-center gap-3">
-							<button class="btn btn-primary btn-lg px-5" type="submit" th:text="#{chatbot.perguntar}">
-								Perguntar
-							</button>
-							<a href="/historico" class="btn btn-outline-secondary btn-lg px-5" th:text="#{chatbot.voltar}">
-								Voltar
-							</a>
-						</div>
-					</form>
-				</div>
+	<div class="container bg-secondary text-light p-4 rounded shadow-lg">
+		<h1 class="text-center mb-4" style="color: #8fbf49;">
+			<span th:text="#{chatbot.text.titulo}">Bot Assistente - Em que posso ajudar?</span>
+		</h1>
+		<form th:action="@{/enviar_chat}" method="post">
+			<div class="mb-4">
+				<label for="pergunta" class="form-label fw-bold" th:text="#{chatbot.text.perguntar}">
+					Digite sua pergunta:
+				</label>
+				<input class="form-control form-control-lg" type="text" name="pergunta" id="pergunta"
+					   placeholder="Digite aqui sua pergunta" required>
 			</div>
-		</div>
+			<div class="text-center mt-4 d-flex justify-content-center gap-3">
+				<button class="btn btn-success btn-lg shadow px-5" style="background-color: #8fbf49; border: none;"
+						type="submit" th:text="#{chatbot.perguntar}">
+					Perguntar
+				</button>
+				<a href="/initial_page" class="btn btn-outline-light btn-lg shadow px-5" th:text="#{chatbot.voltar}">
+					Voltar
+				</a>
+			</div>
+		</form>
 	</div>
 
 </body>
