@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fiap.taligado.dto.AlertaDTO;
 import com.fiap.taligado.dto.SensorDTO;
-import com.fiap.taligado.service.AlertService;
 import com.fiap.taligado.service.AlertaService;
 import com.hivemq.client.mqtt.MqttClient;
 import com.hivemq.client.mqtt.mqtt3.Mqtt3AsyncClient;
@@ -21,17 +20,15 @@ import com.hivemq.client.mqtt.mqtt3.message.publish.Mqtt3Publish;
 @Component
 public class MqttConfig {
 
-	/*private final Mqtt3AsyncClient mqttClient;
+	private final Mqtt3AsyncClient mqttClient;
 	private final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	private final AlertaService alertaService; // Injetar o serviço de alertas
-	private final AlertService alertService; // Injetar o serviço para Toasts
 	private String topic = "taligado/sensor_alerta";
 
-	public MqttConfig(AlertaService alertaService, AlertService alertService) {
+	public MqttConfig(AlertaService alertaService) {
 		
 		this.alertaService = alertaService;
-		this.alertService = alertService;
 		
 		// Configurando o cliente MQTT
 		mqttClient = MqttClient.builder().useMqttVersion3().identifier(UUID.randomUUID().toString())
@@ -145,7 +142,6 @@ public class MqttConfig {
 	            alertaDTO.setSensorId(sensorDTO.getIdSensor());
 
 	            alertaService.criarAlerta(alertaDTO);
-	            alertService.addAlerta("Alerta: " + alertaDTO.getDescricao());
 	            System.out.println("Alerta registrado com sucesso!");
 	        }
 	    } catch (Exception e) {
@@ -182,5 +178,5 @@ public class MqttConfig {
 		} catch (InterruptedException e) {
 			executorService.shutdownNow();
 		}
-	}*/
+	}
 }

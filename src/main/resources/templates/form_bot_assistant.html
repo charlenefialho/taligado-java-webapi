@@ -5,29 +5,42 @@
 
 <body class="bg-dark text-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
 
-	<div class="container bg-secondary text-light p-4 rounded shadow-lg">
-		<h1 class="text-center mb-4" style="color: #8fbf49;">
-			<span th:text="#{chatbot.text.titulo}">Bot Assistente - Em que posso ajudar?</span>
-		</h1>
-		<form th:action="@{/enviar_chat}" method="post">
-			<div class="mb-4">
-				<label for="pergunta" class="form-label fw-bold" th:text="#{chatbot.text.perguntar}">
-					Digite sua pergunta:
-				</label>
-				<input class="form-control form-control-lg" type="text" name="pergunta" id="pergunta"
-					   placeholder="Digite aqui sua pergunta" required>
-			</div>
-			<div class="text-center mt-4 d-flex justify-content-center gap-3">
-				<button class="btn btn-success btn-lg shadow px-5" style="background-color: #8fbf49; border: none;"
-						type="submit" th:text="#{chatbot.perguntar}">
-					Perguntar
-				</button>
-				<a href="/initial_page" class="btn btn-outline-light btn-lg shadow px-5" th:text="#{chatbot.voltar}">
-					Voltar
-				</a>
-			</div>
-		</form>
-	</div>
+    <div class="container p-5 rounded shadow-lg" style="max-width: 600px; background: linear-gradient(145deg, #2c2c2c, #3a3a3a);">
+        <h1 class="text-center mb-4" style="color: #8fbf49; font-weight: bold; font-size: 2.5rem;">
+            <span >Chat Assistente - Em que posso ajudar?</span>
+        </h1>
 
+        <form th:action="@{/enviar_chat}" method="post">
+            <!-- Input da Pergunta -->
+            <div class="mb-4">
+                <label for="pergunta" class="form-label fw-bold" style="color: #8fbf49;">
+                    Digite sua pergunta:
+                </label>
+                <div class="input-group">
+                    <input class="form-control form-control-lg shadow-sm" type="text" name="pergunta" id="pergunta"
+                        placeholder="Digite aqui sua pergunta" style="background-color: #1e1e1e; color: #ffffff; border: 1px solid #8fbf49;" required>
+                    <span class="input-group-text" style="background-color: #8fbf49; border: none;">
+                        <i class="bi bi-chat-dots-fill" style="color: white;"></i>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="text-center mt-4 d-flex justify-content-between">
+                <button class="btn btn-success btn-lg shadow px-5" style="background-color: #8fbf49; border: none;"
+                        type="submit">
+                    Perguntar
+                </button>
+                <a href="/initial_page" class="btn btn-outline-light btn-lg shadow px-5" style="border-color: #8fbf49; color: #8fbf49;"
+                  >
+                    Voltar
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 </body>
+
 </html>

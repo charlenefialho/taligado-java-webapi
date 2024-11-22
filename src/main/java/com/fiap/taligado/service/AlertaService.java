@@ -50,9 +50,11 @@ public class AlertaService {
                 .map(this::converterParaDTO);
     }
     
-    public List<Alerta> listarAlertasPorEmpresa(Long idEmpresa) {
-        return alertaRepository.findByEmpresaId(idEmpresa);
+    public Page<AlertaDTO> listarAlertasPorEmpresa(Long idEmpresa, Pageable pageable) {
+        return alertaRepository.findByEmpresaId(idEmpresa, pageable)
+                .map(this::converterParaDTO);
     }
+
 
     public AlertaDetalhadaDTO buscarDetalhesPorId(Long id) {
         Alerta alerta = alertaRepository.findById(id)

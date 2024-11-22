@@ -10,10 +10,6 @@
 </head>
 <body>
     <div class="container mb-3 d-flex justify-content-between align-items-center">
-        <div th:fragment="mudar_idioma">
-            <a href="?lang=pt" class="btn btn-outline-primary btn-sm">Pt</a>
-            <a href="?lang=en" class="btn btn-outline-secondary btn-sm">En</a>
-        </div>
         <div th:fragment="botao-logout">
             <form th:action="@{/logout}" method="post">
                 <button class="btn btn-secondary btn-sm" type="submit" th:text="#{botao.deslogar}">
