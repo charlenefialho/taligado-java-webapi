@@ -1,31 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments :: head(title='Lista de dispositivos')">
-			
-	</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Lista de Dispositivos</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Status</th>
-                    <th>Filial</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="dispositivo : ${dispositivos}">
-                    <td th:text="${dispositivo.idDispositivo}"></td>
-                    <td th:text="${dispositivo.nome}"></td>
-                    <td th:text="${dispositivo.tipo}"></td>
-                    <td th:text="${dispositivo.status}"></td>
-                    <td th:text="${dispositivo.filialId}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+<head th:replace="fragments :: head(title='Lista de Dispositivos')"></head>
+
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+	<div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+		<h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">Lista de Dispositivos</h1>
+	</div>
+
+	<!-- Botão de Voltar -->
+	<div class="container mb-4">
+		<a href="/initial_page" class="btn btn-secondary shadow px-4 py-2">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</div>
+
+	<div class="container mb-4">
+		<a href="/dispositivos/novo" class="btn btn-success shadow px-4 py-2"
+			style="background-color: #8fbf49; border: none;">
+			<i class="bi bi-plus-circle"></i> Criar Novo Dispositivo
+		</a>
+	</div>
+
+	<div class="container">
+		<table class="table table-bordered table-hover text-center table-striped"
+			style="background-color: #2a2a40; color: #ffffff;">
+			<thead class="table-success" style="background-color: #8FBF48;">
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Status</th>
+					<th>Data Instalação</th>
+					<th>Filial</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dispositivo : ${dispositivos}" style="color: #ffffff;">
+					<td th:text="${dispositivo.idDispositivo}"></td>
+					<td th:text="${dispositivo.nome}"></td>
+					<td th:text="${dispositivo.tipo}"></td>
+					<td th:text="${dispositivo.status}"></td>
+					<td th:text="${dispositivo.dataInstalacao}"></td>
+					<td th:text="${dispositivo.filialNome}"></td> <!-- Mostra o nome da filial -->
+					<td>
+						<form th:action="@{/dispositivos/editar/{id}(id=${dispositivo.idDispositivo})}" method="post"
+							style="display: inline;">
+							<button class="btn btn-warning btn-sm" type="submit">
+								<i class="bi bi-pencil-square"></i> Editar
+							</button>
+						</form>
+						<form th:action="@{/dispositivos/deletar/{id}(id=${dispositivo.idDispositivo})}" method="post"
+							style="display: inline;">
+							<button class="btn btn-danger btn-sm" type="submit">
+								<i class="bi bi-trash"></i> Excluir
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
+
 </html>

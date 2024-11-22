@@ -12,5 +12,6 @@ public class DispositivoDTO {
     private String dataInstalacao;
     private Double potenciaNominal;
     private Long filialId;
+    private String filialNome;
 
 }
