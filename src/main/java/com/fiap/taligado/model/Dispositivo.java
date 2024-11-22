@@ -41,6 +41,7 @@ public class Dispositivo {
     @ManyToOne
     @JoinColumn(name = "filial_idfilial", foreignKey = @ForeignKey(name = "fk_dispositivo_filial"))
     private Filial filial;
+    
 
     @ManyToMany
     @JoinTable(

@@ -11,4 +11,11 @@ public class FilialDTO {
     private String cnpjFilial;
     private String areaOperacional;
 
+    private Long enderecoId;
+    private String logradouro;
+    private String cidade;
+    private String estado;
+    private String cep;
+    private String pais;
 }
+

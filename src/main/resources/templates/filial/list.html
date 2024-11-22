@@ -37,7 +37,13 @@
 					<th>Tipo</th>
 					<th>CNPJ</th>
 					<th>Área Operacional</th>
+					<th>Logradouro</th>
+					<th>Cidade</th>
+					<th>Estado</th>
+					<th>CEP</th>
+					<th>País</th>
 					<th>Ações</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -47,6 +53,11 @@
 					<td th:text="${filial.tipo}"></td>
 					<td th:text="${filial.cnpjFilial}"></td>
 					<td th:text="${filial.areaOperacional}"></td>
+					<td th:text="${filial.logradouro}"></td>
+					<td th:text="${filial.cidade}"></td>
+					<td th:text="${filial.estado}"></td>
+					<td th:text="${filial.cep}"></td>
+					<td th:text="${filial.pais}"></td>
 					<td>
 						<form th:action="@{/filiais/editar/{id}(id=${filial.idFilial})}" method="post"
 							style="display: inline;">
