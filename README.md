@@ -25,6 +25,7 @@ O desenvolvimento do TáLigado atende aos seguintes requisitos:
 - **Tratamento de Erros:** Manipulação de exceções.
 
 - **Mensageria:** Uso do broker com HiveMq para processamentos em tempo real de sensores Iot.
+  [documentação HiveMQ](https://hivemq.github.io/hivemq-mqtt-client/docs/mqtt-operations/disconnect/)
 
 - **Inteligência Artificial:** Integração com Spring AI com a utilização do chat gpt da openai
 ## Arquitetura do Sistema
