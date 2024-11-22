@@ -22,9 +22,9 @@ O desenvolvimento do TáLigado atende aos seguintes requisitos:
 
 - **Segurança:** Implementação de Spring Security para autenticação e autorização.
 
-- **Tratamento de Erros:** Manipulação de exceções com `@ControllerAdvice` e respostas padronizadas.
+- **Tratamento de Erros:** Manipulação de exceções.
 
-- **Mensageria:** Uso de filas assíncronas com RabbitMQ para processamentos em background.
+- **Mensageria:** Uso do broker com HiveMq para processamentos em tempo real de sensores Iot.
 
 - **Inteligência Artificial:** Integração com Spring AI com a utilização do chat gpt da openai
 ## Arquitetura do Sistema
@@ -83,13 +83,13 @@ O banco de dados foi modelado seguindo as normas de normalização até a 3ª Fo
 
 ## Principais funcionalidades
 
-- **Monitoramento em Tempo Real:** Captura e análise contínua de consumo energético e emissões.
+- **Monitoramento em Tempo Real:** Captura e análise contínua de sensores (no caso temos uma simulação com um schedular).
 
-- **Previsão de Consumo e Emissões:** Algoritmos de aprendizado de máquina para identificar padrões.
+- **Integração com IA:** Integração com chat Gpt como um chat assistant.
 
 - **Alertas Proativos:** Notificações em caso de desvios críticos no consumo ou emissões.
 
-- **Relatórios Personalizados:** Geração de relatórios para compliance ambiental e decisões estratégicas.
+- **Histórico de consumo:**  Históricos de registre diário de consumo de energa e emissão de carbono.
 
 - **Autenticação Segura:** Controle de acesso baseado em roles.
 
