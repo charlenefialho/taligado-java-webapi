@@ -1,5 +1,7 @@
 package com.fiap.taligado.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -13,5 +15,6 @@ public class DispositivoDTO {
     private Double potenciaNominal;
     private Long filialId;
     private String filialNome;
+    private List<SensorDTO> sensores;
 
 }

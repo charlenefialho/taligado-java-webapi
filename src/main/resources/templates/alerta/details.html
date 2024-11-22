@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Detalhes do Alerta')"></head>
+
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+	<!-- Header -->
+	<div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+		<h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">Detalhes do Alerta</h1>
+	</div>
+
+
+	<!-- Botão de Voltar -->
+	<div class="container mb-4">
+		<a href="/alertas" class="btn btn-secondary shadow px-4 py-2">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</div>
+
+	<!-- Detalhes do Alerta -->
+	<div class="container" style="max-width: 900px;">
+		<div class="row">
+			<!-- Informações do Alerta -->
+			<div class="col-12 mb-4">
+				<div class="card bg-secondary text-light">
+					<div class="card-header text-center" style="background-color: #8fbf49; color: #2c2c2c;">
+						<strong>Informações do Alerta</strong>
+					</div>
+					<div class="card-body">
+						<p><strong>ID do Alerta:</strong> <span th:text="${alerta.idAlerta}"></span></p>
+						<p><strong>Descrição:</strong> <span th:text="${alerta.descricao}"></span></p>
+						<p><strong>Severidade:</strong> <span th:text="${alerta.severidade}"></span></p>
+						<p><strong>Data do Alerta:</strong>
+							<span th:text="${#dates.format(alerta.dataAlerta, 'dd/MM/yyyy HH:mm')}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Informações do Sensor -->
+			<div class="col-md-6 mb-4">
+				<div class="card bg-secondary text-light">
+					<div class="card-header text-center" style="background-color: #8fbf49; color: #2c2c2c;">
+						<strong>Informações do Sensor</strong>
+					</div>
+					<div class="card-body">
+						<p><strong>ID do Sensor:</strong> <span th:text="${alerta.sensorId}"></span></p>
+						<p><strong>Tipo:</strong> <span th:text="${alerta.sensorTipo}"></span></p>
+						<p><strong>Descrição:</strong> <span th:text="${alerta.sensorDescricao}"></span></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Informações do Dispositivo -->
+			<div class="col-md-6 mb-4">
+				<div class="card bg-secondary text-light">
+					<div class="card-header text-center" style="background-color: #8fbf49; color: #2c2c2c;">
+						<strong>Informações do Dispositivo</strong>
+					</div>
+					<div class="card-body">
+						<p><strong>ID do Dispositivo:</strong> <span th:text="${alerta.dispositivoId}"></span></p>
+						<p><strong>Nome:</strong> <span th:text="${alerta.dispositivoNome}"></span></p>
+						<p><strong>Tipo:</strong> <span th:text="${alerta.dispositivoTipo}"></span></p>
+						<p><strong>Status:</strong> <span th:text="${alerta.dispositivoStatus}"></span></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Informações da Filial -->
+			<div class="col-12 mb-4">
+				<div class="card bg-secondary text-light">
+					<div class="card-header text-center" style="background-color: #8fbf49; color: #2c2c2c;">
+						<strong>Informações da Filial</strong>
+					</div>
+					<div class="card-body">
+						<p><strong>ID da Filial:</strong> <span th:text="${alerta.filialId}"></span></p>
+						<p><strong>Nome:</strong> <span th:text="${alerta.filialNome}"></span></p>
+						<p><strong>Tipo:</strong> <span th:text="${alerta.filialTipo}"></span></p>
+						<p><strong>CNPJ:</strong> <span th:text="${alerta.filialCnpj}"></span></p>
+						<p><strong>Área Operacional:</strong> <span th:text="${alerta.filialAreaOperacional}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

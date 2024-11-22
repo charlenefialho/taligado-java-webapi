@@ -21,12 +21,12 @@ import com.hivemq.client.mqtt.mqtt3.message.publish.Mqtt3Publish;
 @Component
 public class MqttConfig {
 
-	/*private final Mqtt3AsyncClient mqttClient;
+	private final Mqtt3AsyncClient mqttClient;
 	private final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 	private final ObjectMapper objectMapper = new ObjectMapper();
 	private final AlertaService alertaService; // Injetar o serviço de alertas
 	private final AlertService alertService; // Injetar o serviço para Toasts
-	private String topic = "taligado/teste";
+	private String topic = "taligado/sensor";
 
 	public MqttConfig(AlertaService alertaService, AlertService alertService) {
 		
@@ -182,5 +182,5 @@ public class MqttConfig {
 		} catch (InterruptedException e) {
 			executorService.shutdownNow();
 		}
-	}*/
+	}
 }

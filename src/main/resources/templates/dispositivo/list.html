@@ -46,18 +46,19 @@
 					<td th:text="${dispositivo.dataInstalacao}"></td>
 					<td th:text="${dispositivo.filialNome}"></td> <!-- Mostra o nome da filial -->
 					<td>
-						<form th:action="@{/dispositivos/editar/{id}(id=${dispositivo.idDispositivo})}" method="post"
-							style="display: inline;">
-							<button class="btn btn-warning btn-sm" type="submit">
-								<i class="bi bi-pencil-square"></i> Editar
-							</button>
-						</form>
-						<form th:action="@{/dispositivos/deletar/{id}(id=${dispositivo.idDispositivo})}" method="post"
-							style="display: inline;">
-							<button class="btn btn-danger btn-sm" type="submit">
-								<i class="bi bi-trash"></i> Excluir
-							</button>
-						</form>
+					    <form th:action="@{/dispositivos/editar/{id}(id=${dispositivo.idDispositivo})}" method="post" style="display: inline;">
+					        <button class="btn btn-warning btn-sm" type="submit">
+					            <i class="bi bi-pencil-square"></i> Editar
+					        </button>
+					    </form>
+					    <form th:action="@{/dispositivos/deletar/{id}(id=${dispositivo.idDispositivo})}" method="post" style="display: inline;">
+					        <button class="btn btn-danger btn-sm" type="submit">
+					            <i class="bi bi-trash"></i> Excluir
+					        </button>
+					    </form>
+					    <a th:href="@{/dispositivos/{id}/sensores(id=${dispositivo.idDispositivo})}" class="btn btn-info btn-sm">
+					        <i class="bi bi-list"></i> Sensores
+					    </a>
 					</td>
 				</tr>
 			</tbody>

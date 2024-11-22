@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fiap.taligado.dto.DispositivoDTO;
+import com.fiap.taligado.dto.SensorDTO;
 import com.fiap.taligado.model.Dispositivo;
 import com.fiap.taligado.model.Filial;
 import com.fiap.taligado.repository.DispositivoRepository;
@@ -70,10 +71,26 @@ public class DispositivoService {
         dto.setNome(dispositivo.getNome());
         dto.setTipo(dispositivo.getTipo());
         dto.setStatus(dispositivo.getStatus());
-        dto.setPotenciaNominal(dispositivo.getPotenciaNominal());
         dto.setDataInstalacao(dispositivo.getDataInstalacao());
+        dto.setPotenciaNominal(dispositivo.getPotenciaNominal());
         dto.setFilialId(dispositivo.getFilial().getIdFilial());
         dto.setFilialNome(dispositivo.getFilial().getNome());
+        
+        // Adiciona os sensores associados
+        List<SensorDTO> sensores = dispositivo.getSensores().stream()
+                .map(sensor -> {
+                    SensorDTO sensorDTO = new SensorDTO();
+                    sensorDTO.setIdSensor(sensor.getIdSensor());
+                    sensorDTO.setTipo(sensor.getTipo());
+                    sensorDTO.setDescricao(sensor.getDescricao());
+                    sensorDTO.setUnidade(sensor.getUnidade());
+                    sensorDTO.setValorAtual(sensor.getValorAtual());
+                    sensorDTO.setTempoOperacao(sensor.getTempoOperacao());
+                    sensorDTO.setDispositivoId(sensor.getDispositivo().getIdDispositivo());
+                    return sensorDTO;
+                }).collect(Collectors.toList());
+        dto.setSensores(sensores);
+
         return dto;
     }
 }

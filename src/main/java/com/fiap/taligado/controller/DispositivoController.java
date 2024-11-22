@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fiap.taligado.dto.DispositivoDTO;
 import com.fiap.taligado.service.DispositivoService;
 import com.fiap.taligado.service.FilialService;
+import com.fiap.taligado.service.SensorService;
 
 import jakarta.validation.Valid;
 
@@ -26,6 +27,17 @@ public class DispositivoController {
     private DispositivoService dispositivoService;
     @Autowired
     private FilialService filialService;
+    @Autowired
+    private SensorService sensorService;
+    
+    @GetMapping("/{id}/sensores")
+    public ModelAndView listarSensores(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("sensor/list");
+        DispositivoDTO dispositivo = dispositivoService.buscarPorId(id);
+        mv.addObject("dispositivo", dispositivo);
+        mv.addObject("sensores", sensorService.buscarPorDispositivo(id)); // Busca sensores do dispositivo
+        return mv;
+    }
 
     // Página de listagem
     @GetMapping

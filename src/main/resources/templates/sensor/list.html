@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Sensores do Dispositivo')"></head>
+
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+	<div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+		<h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">
+			Sensores do Dispositivo <span th:text="${dispositivo.nome}"></span>
+		</h1>
+	</div>
+
+	<!-- Botão de Voltar -->
+	<div class="container mb-4">
+		<a th:href="@{/dispositivos}" class="btn btn-secondary shadow px-4 py-2">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</div>
+
+	<div class="container mb-4">
+		<a th:href="@{/sensores/novo/{dispositivoId}(dispositivoId=${dispositivo.idDispositivo})}"
+			class="btn btn-success shadow px-4 py-2" style="background-color: #8fbf49; border: none;">
+			<i class="bi bi-plus-circle"></i> Criar Novo Sensor
+		</a>
+	</div>
+
+
+	<div class="container">
+		<table class="table table-bordered table-hover text-center table-striped"
+			style="background-color: #2a2a40; color: #ffffff;">
+			<thead class="table-success" style="background-color: #8FBF48;">
+				<tr>
+					<th>ID</th>
+					<th>Tipo</th>
+					<th>Descrição</th>
+					<th>Unidade</th>
+					<th>Valor Atual</th>
+					<th>Tempo de Operação</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="sensor : ${sensores}" style="color: #ffffff;">
+					<td th:text="${sensor.idSensor}"></td>
+					<td th:text="${sensor.tipo}"></td>
+					<td th:text="${sensor.descricao}"></td>
+					<td th:text="${sensor.unidade}"></td>
+					<td th:text="${sensor.valorAtual}"></td>
+					<td th:text="${sensor.tempoOperacao}"></td>
+					<td>
+					    <a th:href="@{/sensores/editar/{id}(id=${sensor.idSensor})}" class="btn btn-warning btn-sm">
+					        <i class="bi bi-pencil-square"></i> Editar
+					    </a>
+					    <form th:action="@{/sensores/deletar/{id}/{dispositivoId}(id=${sensor.idSensor}, dispositivoId=${dispositivo.idDispositivo})}" 
+					          method="post" style="display: inline;">
+					        <button class="btn btn-danger btn-sm" type="submit">
+					            <i class="bi bi-trash"></i> Excluir
+					        </button>
+					    </form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Lista de Alertas')"></head>
+
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; flex-direction: column; align-items: center;">
+
+	<div class="container text-center py-4 mb-4" style="background-color: #2c2c2c; border-radius: 10px;">
+		<h1 class="mb-3" style="color: #8fbf49; font-size: 2rem;">Lista de Alertas</h1>
+	</div>
+
+	<!-- Botão de Voltar -->
+	<div class="container mb-4">
+		<a href="/initial_page" class="btn btn-secondary shadow px-4 py-2">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</div>
+
+	<div class="container">
+		<table class="table table-bordered table-hover text-center table-striped"
+			style="background-color: #2a2a40; color: #ffffff;">
+			<thead class="table-success" style="background-color: #8FBF48;">
+				<tr>
+					<th>ID</th>
+					<th>Descrição</th>
+					<th>Severidade</th>
+					<th>Data</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="alerta : ${alertas.content}" style="color: #ffffff;">
+					<td th:text="${alerta.idAlerta}"></td>
+					<td th:text="${alerta.descricao}"></td>
+					<td th:text="${alerta.severidade}"></td>
+					<td th:text="${#dates.format(alerta.dataAlerta, 'dd/MM/yyyy HH:mm')}"></td>
+					<td>
+						<a th:href="@{/alertas/{id}(id=${alerta.idAlerta})}" class="btn btn-info btn-sm">
+							Ver Detalhes
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<!-- Paginação -->
+		<nav>
+			<ul class="pagination justify-content-center">
+				<li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+					<a class="page-link" th:href="@{/alertas(page=${currentPage - 1})}">Anterior</a>
+				</li>
+				<li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+					th:classappend="${currentPage == i} ? 'active'">
+					<a class="page-link" th:href="@{/alertas(page=${i})}" th:text="${i + 1}"></a>
+				</li>
+				<li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+					<a class="page-link" th:href="@{/alertas(page=${currentPage + 1})}">Próxima</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</body>
+
+</html>
