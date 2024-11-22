@@ -65,6 +65,9 @@ O desenvolvimento do TáLigado atende aos seguintes requisitos:
 
 O banco de dados foi modelado seguindo as normas de normalização até a 3ª Forma Normal, garantindo integridade, consistência e minimização de redundâncias.
 
+#### OBS
+COnfigurar no `àpplication.properties` a conexao com o banco oracle.
+
 ### Principais Tabelas
 - **Empresa:** Dados cadastrais das empresas monitoradas.
 - **Filial:** Relaciona-se com a tabela Empresa, representando suas unidades.
