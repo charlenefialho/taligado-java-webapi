@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fiap.taligado.dto.FilialDTO;
+import com.fiap.taligado.model.Empresa;
 import com.fiap.taligado.model.Endereco;
 import com.fiap.taligado.model.Filial;
+import com.fiap.taligado.repository.EmpresaRepository;
 import com.fiap.taligado.repository.EnderecoRepository;
 import com.fiap.taligado.repository.FilialRepository;
 
@@ -20,6 +22,9 @@ public class FilialService {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
+    
+    @Autowired
+    private EmpresaRepository empresaRepository;
 
     public List<FilialDTO> buscarTodas() {
         List<Filial> filiais = filialRepository.findAll();
@@ -33,8 +38,12 @@ public class FilialService {
                 .orElseThrow(() -> new IllegalArgumentException("Filial não encontrada"));
         return converterParaDTO(filial);
     }
+    
+    public List<Filial> listarFiliaisPorEmpresa(Long idEmpresa) {
+        return filialRepository.findByEmpresaId(idEmpresa);
+    }
 
-    public void salvarOuAtualizar(FilialDTO filialDTO) {
+    public void salvarOuAtualizar(FilialDTO filialDTO, Long idEmpresa) {
         Filial filial;
 
         if (filialDTO.getIdFilial() != null) {
@@ -63,6 +72,11 @@ public class FilialService {
         filial.setTipo(filialDTO.getTipo());
         filial.setCnpjFilial(filialDTO.getCnpjFilial());
         filial.setAreaOperacional(filialDTO.getAreaOperacional());
+
+        // Vincular a empresa logada
+        Empresa empresa = empresaRepository.findById(idEmpresa)
+                .orElseThrow(() -> new IllegalArgumentException("Empresa não encontrada"));
+        filial.setEmpresa(empresa);
 
         filialRepository.save(filial);
     }

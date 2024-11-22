@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Cadastro de Empresa')"></head>
+
+<body class="bg-dark text-light" style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+	<div class="card shadow-lg" style="max-width: 600px; width: 100%; border-radius: 10px; background-color: #2c2c2c;">
+		<div class="card-header text-center" style="background-color: #8fbf49; color: white; font-weight: bold;">
+			<h1>Cadastro de Empresa</h1>
+		</div>
+		<div class="card-body">
+			<form th:action="@{/cadastro}" method="post">
+				<form th:action="@{/cadastro}" method="post">
+					<div class="mb-3">
+						<label for="nome" class="form-label">Nome</label>
+						<input type="text" id="nome" name="nome" class="form-control bg-dark text-light"
+							placeholder="Digite o nome da empresa" required>
+					</div>
+					<div class="mb-3">
+						<label for="email" class="form-label">E-mail</label>
+						<input type="email" id="email" name="email" class="form-control bg-dark text-light"
+							placeholder="Digite o e-mail da empresa" required>
+					</div>
+					<div class="mb-3">
+						<label for="cnpj" class="form-label">CNPJ</label>
+						<input type="text" id="cnpj" name="cnpj" class="form-control bg-dark text-light"
+							placeholder="Digite o CNPJ" required>
+					</div>
+					<div class="mb-3">
+						<label for="segmento" class="form-label">Segmento</label>
+						<input type="text" id="segmento" name="segmento" class="form-control bg-dark text-light"
+							placeholder="Digite o segmento da empresa" required>
+					</div>
+					<div class="mb-3">
+						<label for="senha" class="form-label">Senha</label>
+						<input type="password" id="senha" name="senha" class="form-control bg-dark text-light"
+							placeholder="Digite uma senha" required>
+					</div>
+					<button type="submit" class="btn w-100"
+						style="background-color: #8fbf49; border: none; color: white;">
+						Cadastrar
+					</button>
+				</form>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

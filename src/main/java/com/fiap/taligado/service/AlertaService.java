@@ -1,6 +1,7 @@
 package com.fiap.taligado.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,6 +48,10 @@ public class AlertaService {
     public Page<AlertaDTO> buscarTodos(Pageable pageable) {
         return alertaRepository.findAll(pageable)
                 .map(this::converterParaDTO);
+    }
+    
+    public List<Alerta> listarAlertasPorEmpresa(Long idEmpresa) {
+        return alertaRepository.findByEmpresaId(idEmpresa);
     }
 
     public AlertaDetalhadaDTO buscarDetalhesPorId(Long id) {

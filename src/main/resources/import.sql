@@ -1,5 +1,5 @@
 -- Tabela: empresa
-INSERT INTO empresa ( nome, email, cnpj, segmento, data_fundacao) VALUES ('Empresa A', 'contato@empresaA.com', '12345678000101', 'Tecnologia', '2010-05-20'), ('Empresa B', 'contato@empresaB.com', '98765432000109', 'Energia', '2015-08-10');
+INSERT INTO empresa (nome, email, cnpj, segmento, data_fundacao, senha) VALUES ('Empresa A', 'contato@empresaA.com', '12345678000101', 'Tecnologia', '2010-05-20', '$2a$12$WfywXhULh5XtNrysWiTKluilR1Ngq4TJpSLSbzmv5Ueuw3aMT0n5m'), ('Empresa B', 'contato@empresaB.com', '98765432000109', 'Energia', '2015-08-10', '$2a$12$926s2U8p6hFI64JGexrPsOqW9g2jiDlGuyBjNmFUPzqp56nMKG40m');
 
 -- Tabela: endereco
 INSERT INTO endereco ( logradouro, cidade, estado, cep, pais) VALUES ('Rua Principal, 123', 'São Paulo', 'SP', '01000-000', 'Brasil'), ('Avenida Secundária, 456', 'Rio de Janeiro', 'RJ', '20000-000', 'Brasil');

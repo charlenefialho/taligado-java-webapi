@@ -1,13 +1,23 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head(title='Acesso Negado')">
-<body>
-	<div class="container">
-	
-	<h1><b>Acesso Negado</b></h1><br>
-	<a th:href="@{/login}" th:text="#{acesso.negado}"></a>
-	</div>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head(title='Acesso Negado')"></head>
+<body class="bg-dark text-light" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+
+    <div class="container text-center p-5" style="background-color: #2c2c2c; border-radius: 10px; max-width: 500px;">
+        <h1 class="text-danger mb-4" style="font-size: 3rem;">
+            <i class="bi bi-shield-lock-fill"></i> Acesso Negado
+        </h1>
+        <p class="text-light mb-4" style="font-size: 1.2rem;">
+            Você não tem permissão para acessar esta página.
+        </p>
+        <a th:href="@{/login}" class="btn btn-primary btn-lg px-5" style="background-color: #8fbf49; border: none;">
+            <i class="bi bi-arrow-left-circle"></i> Voltar para o Login
+        </a>
+    </div>
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 
 </body>
 </html>

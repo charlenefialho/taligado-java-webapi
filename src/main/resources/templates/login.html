@@ -1,37 +1,38 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head(title='Login')"></head>
-<body class="bg-dark text-light" style="height: 100vh; display: flex; justify-content: center; align-items: center;">
-    <div class="card shadow-lg" style="max-width: 400px; width: 100%; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;">
-        <div class="card-header text-center" style="background-color: #8fbf49; color: white; font-weight: bold;">
-            <h1 th:text="#{nome.sistema}">Login</h1>
-        </div>
-        <div class="card-body">
-            <div th:replace="~{fragments :: mudar_idioma}" class="mb-3 text-end"></div>
-            
-            <div th:if="${param.logout}" class="alert alert-success text-center" role="alert" th:text="#{mensagem.logout}">
-                Você saiu com sucesso.
-            </div>
 
-            <form th:action="@{/login}" method="post">
-                <div class="mb-3">
-                    <label for="username" class="form-label text-light" th:text="#{usuario.sistema}">Usuário</label>
-                    <input type="text" id="username" name="username" class="form-control bg-dark text-light" placeholder="Digite seu usuário" style="border: 1px solid #8fbf49;">
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label text-light" th:text="#{senha.sistema}">Senha</label>
-                    <input type="password" id="password" name="password" class="form-control bg-dark text-light" placeholder="Digite sua senha" style="border: 1px solid #8fbf49;">
-                </div>
-                
-                <div th:if="${param.falha}" class="alert alert-danger text-center" role="alert" th:text="#{mensagem.falha}">
-                    Usuário e/ou senha inválidos.
-                </div>
-                
-                <button type="submit" class="btn w-100" style="background-color: #8fbf49; border: none; color: white;">
-                    <span th:text="#{botao.logar}">Confirmar</span>
-                </button>
-            </form>
-        </div>
-    </div>
+<head th:replace="fragments :: head(title='Login')"></head>
+
+<body class="bg-dark text-light" style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+	<div class="card shadow-lg"
+		style="max-width: 400px; width: 100%; border-radius: 10px; background-color: #2c2c2c; color: #ffffff;">
+		<div class="card-header text-center" style="background-color: #8fbf49; color: white; font-weight: bold;">
+			<h1 th:text="#{nome.sistema}">Login</h1>
+		</div>
+		<div class="card-body">
+			<form th:action="@{/login}" method="post">
+				<div class="mb-3">
+					<label for="cnpj" class="form-label text-light">CNPJ</label>
+					<input type="text" id="cnpj" name="username" class="form-control bg-dark text-light"
+						placeholder="Digite seu CNPJ" style="border: 1px solid #8fbf49;" required>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label text-light">Senha</label>
+					<input type="password" id="password" name="password" class="form-control bg-dark text-light"
+						placeholder="Digite sua senha" style="border: 1px solid #8fbf49;" required>
+				</div>
+				<div th:if="${param.falha}" class="alert alert-danger text-center" role="alert">CNPJ ou senha inválidos.
+				</div>
+				<button type="submit" class="btn w-100" style="background-color: #8fbf49; border: none; color: white;">
+					Entrar
+				</button>
+			</form>
+		</div>
+		<div class="card-footer text-center">
+			<a th:href="@{/cadastro}" class="text-light">Cadastrar Empresa</a>
+		</div>
+	</div>
+	</div>
 </body>
+
 </html>

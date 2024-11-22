@@ -44,7 +44,7 @@
 					<td th:text="${dispositivo.tipo}"></td>
 					<td th:text="${dispositivo.status}"></td>
 					<td th:text="${dispositivo.dataInstalacao}"></td>
-					<td th:text="${dispositivo.filialNome}"></td> <!-- Mostra o nome da filial -->
+					<td th:text="${dispositivo.filial.nome}">Nome da Filial</td> <!-- Mostra o nome da filial -->
 					<td>
 					    <form th:action="@{/dispositivos/editar/{id}(id=${dispositivo.idDispositivo})}" method="post" style="display: inline;">
 					        <button class="btn btn-warning btn-sm" type="submit">

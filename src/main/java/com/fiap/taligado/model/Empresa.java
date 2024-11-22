@@ -30,5 +30,7 @@ public class Empresa {
 
     @Column(name = "data_fundacao")
     private Date dataFundacao;
+    
+    private String senha;
 
 }

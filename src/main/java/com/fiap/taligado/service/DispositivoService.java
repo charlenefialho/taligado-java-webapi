@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fiap.taligado.dto.DispositivoDTO;
 import com.fiap.taligado.dto.SensorDTO;
 import com.fiap.taligado.model.Dispositivo;
+import com.fiap.taligado.model.Empresa;
 import com.fiap.taligado.model.Filial;
 import com.fiap.taligado.repository.DispositivoRepository;
 import com.fiap.taligado.repository.FilialRepository;
@@ -21,6 +22,8 @@ public class DispositivoService {
 
     @Autowired
     private FilialRepository filialRepository; // Injetar o repositório de Filial
+    @Autowired
+    private EmpresaAutenticadaService empresaAutenticadaService;
 
     public List<DispositivoDTO> buscarTodos() {
         List<Dispositivo> dispositivos = dispositivoRepository.findAll();
@@ -33,6 +36,10 @@ public class DispositivoService {
         Dispositivo dispositivo = dispositivoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Dispositivo não encontrado"));
         return converterParaDTO(dispositivo);
+    }
+    
+    public List<Dispositivo> buscarDispositivosPorEmpresa(Long idEmpresa) {
+        return dispositivoRepository.findByEmpresaId(idEmpresa);
     }
 
     public void salvarOuAtualizar(DispositivoDTO dispositivoDTO) {
