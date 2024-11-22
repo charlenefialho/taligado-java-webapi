@@ -91,13 +91,26 @@ public class DispositivoController {
 
 	// Salvar ou atualizar dispositivo
 	@PostMapping
-	public ModelAndView salvar(@Valid @ModelAttribute DispositivoDTO dispositivoDTO, BindingResult result) {
-		if (result.hasErrors()) {
-			return new ModelAndView("dispositivo/form");
-		}
-		dispositivoService.salvarOuAtualizar(dispositivoDTO);
-		return new ModelAndView("redirect:/dispositivos");
+	public ModelAndView salvar(@Valid @ModelAttribute DispositivoDTO dispositivoDTO, 
+	                     BindingResult result, 
+	                     Model model, 
+	                     Principal principal) {
+		
+		
+	    if (result.hasErrors()) {
+	        // Recuperar a lista de filiais da empresa logada para repopular o formulário
+	        Long idEmpresa = obterIdEmpresaDoUsuarioLogado(principal);
+	        model.addAttribute("filiais", filialService.listarFiliaisPorEmpresa(idEmpresa));
+	        
+	        return new ModelAndView("dispositivo/form");
+	    }
+
+	    // Salvar ou atualizar o dispositivo
+	    dispositivoService.salvarOuAtualizar(dispositivoDTO);
+	    return new ModelAndView("redirect:/dispositivos");
 	}
+
+	
 
 	// Excluir dispositivo
 	@PostMapping("/deletar/{id}")

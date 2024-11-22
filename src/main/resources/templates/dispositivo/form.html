@@ -11,58 +11,70 @@
         <h1 class="text-center mb-4" style="color: #8fbf49;">
             <span th:text="${dispositivo.idDispositivo != null ? 'Editar Dispositivo' : 'Novo Dispositivo'}"></span>
         </h1>
-        <form th:action="@{/dispositivos}" th:object="${dispositivo}" method="post" class="needs-validation" novalidate>
-            <input type="hidden" th:field="*{idDispositivo}">
+		<form th:action="@{/dispositivos}" th:object="${dispositivo}" method="post" class="needs-validation" novalidate>
+		    <input type="hidden" th:field="*{idDispositivo}">
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" id="nome" class="form-control" th:field="*{nome}" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="tipo" class="form-label">Tipo</label>
-                    <input type="text" id="tipo" class="form-control" th:field="*{tipo}" required>
-                </div>
-            </div>
+		    <div class="row">
+		        <div class="col-md-6 mb-3">
+		            <label for="nome" class="form-label">Nome</label>
+		            <input type="text" id="nome" class="form-control" th:field="*{nome}" required>
+		            <!-- Mensagem de erro para 'nome' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+		        </div>
+		        <div class="col-md-6 mb-3">
+		            <label for="tipo" class="form-label">Tipo</label>
+		            <input type="text" id="tipo" class="form-control" th:field="*{tipo}" required>
+		            <!-- Mensagem de erro para 'tipo' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></div>
+		        </div>
+		    </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <select id="status" class="form-select" th:field="*{status}" required>
-                        <option value="" disabled selected>Selecione o status</option>
-                        <option value="Ativo" th:selected="${dispositivo.status == 'Ativo'}">Ativo</option>
-                        <option value="Inativo" th:selected="${dispositivo.status == 'Inativo'}">Inativo</option>
-                    </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="dataInstalacao" class="form-label">Data de Instalação</label>
-                    <input type="date" id="dataInstalacao" class="form-control" th:field="*{dataInstalacao}" required>
-                </div>
-            </div>
+		    <div class="row">
+		        <div class="col-md-6 mb-3">
+		            <label for="status" class="form-label">Status</label>
+		            <select id="status" class="form-select" th:field="*{status}" required>
+		                <option value="" disabled selected>Selecione o status</option>
+		                <option value="Ativo" th:selected="${dispositivo.status == 'Ativo'}">Ativo</option>
+		                <option value="Inativo" th:selected="${dispositivo.status == 'Inativo'}">Inativo</option>
+		            </select>
+		            <!-- Mensagem de erro para 'status' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+		        </div>
+		        <div class="col-md-6 mb-3">
+		            <label for="dataInstalacao" class="form-label">Data de Instalação</label>
+		            <input type="date" id="dataInstalacao" class="form-control" th:field="*{dataInstalacao}" required>
+		            <!-- Mensagem de erro para 'dataInstalacao' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('dataInstalacao')}" th:errors="*{dataInstalacao}"></div>
+		        </div>
+		    </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="potenciaNominal" class="form-label">Potência Nominal</label>
-                    <input type="number" step="0.01" id="potenciaNominal" class="form-control" th:field="*{potenciaNominal}" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="filialId" class="form-label">Filial</label>
-                    <select id="filialId" class="form-select" th:field="*{filialId}" required>
-                        <option value="" disabled selected>Selecione a filial</option>
-                        <option th:each="filial : ${filiais}" th:value="${filial.idFilial}" th:text="${filial.nome}"></option>
-                    </select>
-                </div>
-            </div>
+		    <div class="row">
+		        <div class="col-md-6 mb-3">
+		            <label for="potenciaNominal" class="form-label">Potência Nominal</label>
+		            <input type="number" step="0.01" id="potenciaNominal" class="form-control" th:field="*{potenciaNominal}" required>
+		            <!-- Mensagem de erro para 'potenciaNominal' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('potenciaNominal')}" th:errors="*{potenciaNominal}"></div>
+		        </div>
+		        <div class="col-md-6 mb-3">
+		            <label for="filialId" class="form-label">Filial</label>
+		            <select id="filialId" class="form-select" th:field="*{filialId}" required>
+		                <option value="" disabled selected>Selecione a filial</option>
+		                <option th:each="filial : ${filiais}" th:value="${filial.idFilial}" th:text="${filial.nome}"></option>
+		            </select>
+		            <!-- Mensagem de erro para 'filialId' -->
+		            <div class="text-danger" th:if="${#fields.hasErrors('filialId')}" th:errors="*{filialId}"></div>
+		        </div>
+		    </div>
 
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-success shadow px-4 py-2" style="background-color: #8fbf49; border: none;">
-                    <i class="bi bi-save"></i> Salvar
-                </button>
-                <a href="/dispositivos" class="btn btn-secondary shadow px-4 py-2">
-                    <i class="bi bi-arrow-left"></i> Voltar
-                </a>
-            </div>
-        </form>
+		    <div class="text-center mt-4">
+		        <button type="submit" class="btn btn-success shadow px-4 py-2" style="background-color: #8fbf49; border: none;">
+		            <i class="bi bi-save"></i> Salvar
+		        </button>
+		        <a href="/dispositivos" class="btn btn-secondary shadow px-4 py-2">
+		            <i class="bi bi-arrow-left"></i> Voltar
+		        </a>
+		    </div>
+		</form>
     </div>
 </body>
 
