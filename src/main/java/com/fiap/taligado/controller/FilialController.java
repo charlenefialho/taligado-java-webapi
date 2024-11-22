@@ -40,7 +40,7 @@ public class FilialController {
     }
 
     // Página para editar uma filial existente
-    @PostMapping("/filiais/{id}/editar/")
+    @PostMapping("/filiais/editar/{id}")
     public ModelAndView editarFilial(@PathVariable Long id) {
         ModelAndView mv = new ModelAndView("filial/form");
         mv.addObject("filial", filialService.buscarPorId(id));

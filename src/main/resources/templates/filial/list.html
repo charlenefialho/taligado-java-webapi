@@ -11,6 +11,13 @@
 		<p class="lead">Gerencie as filiais cadastradas no sistema.</p>
 	</div>
 
+	<!-- Botão de Voltar -->
+	<div class="container mb-4">
+		<a href="/initial_page" class="btn btn-secondary shadow px-4 py-2">
+			<i class="bi bi-arrow-left"></i> Voltar
+		</a>
+	</div>
+
 	<!-- Botão de Criar Filial -->
 	<div class="container mb-4 text-center">
 		<a href="/filiais/nova" class="btn btn-success shadow px-4 py-2"
@@ -41,7 +48,7 @@
 					<td th:text="${filial.cnpjFilial}"></td>
 					<td th:text="${filial.areaOperacional}"></td>
 					<td>
-						<form th:action="@{/filiais/{id}/editar(id=${filial.idFilial})}" method="post"
+						<form th:action="@{/filiais/editar/{id}(id=${filial.idFilial})}" method="post"
 							style="display: inline;">
 							<button class="btn btn-warning btn-sm" type="submit">
 								<i class="bi bi-pencil-square"></i> Editar
