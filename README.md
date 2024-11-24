@@ -98,7 +98,7 @@ Configurar no `application.properties` a conexao com o banco oracle.
 - **Processamento Assíncrono:** Uso de filas com broker client MQTT
 
 # Vídeo
-[link do video](https://www.youtube.com/watch?v=ZUj-5MNA3l4)
+[link do video](https://www.youtube.com/watch?v=JG9cKDE-1vg)
 
 
 ### Integrantes do grupo
