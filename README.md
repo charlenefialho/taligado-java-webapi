@@ -2,9 +2,9 @@
 # 🔋TáLigado - Monitoramento de Consumo Energético e Sustentabilidade
 
 Descrição do Projeto
-O TáLigado é um sistema inovador que integra tecnologias de IoT, aprendizado de máquina e visualização de dados para monitorar o consumo energético e as emissões de CO₂ em tempo real. O objetivo principal é fornecer às empresas ferramentas para reduzir custos, melhorar a eficiência energética e cumprir metas de sustentabilidade, promovendo a redução da pegada de carbono.
+O TáLigado é um sistema inovador que integra tecnologias de IoT,com visualização de dados para monitorar o consumo energético e as emissões de CO₂ em tempo real. O objetivo principal é fornecer às empresas ferramentas para reduzir custos, melhorar a eficiência energética e cumprir metas de sustentabilidade, promovendo a redução da pegada de carbono.
 
-O sistema captura dados através de dispositivos IoT, analisa padrões de consumo utilizando algoritmos de machine learning e emite alertas e recomendações baseadas em insights acionáveis.
+O sistema captura dados através de dispositivos IoT, emite alertas e recomendações baseadas em insights acionáveis.
 
 
 
@@ -17,8 +17,6 @@ O desenvolvimento do TáLigado atende aos seguintes requisitos:
 - **Modelagem de Dados:** Classes model e DTO com encapsulamento adequado.
 
 - **Persistência de Dados:** Integração com Spring Data JPA e suporte a banco de dados relacional oracle.
-
-- **Validação de Dados:** Utilização de Bean Validation (`@NotNull`, `@Size`, etc.).
 
 - **Segurança:** Implementação de Spring Security para autenticação e autorização.
 
